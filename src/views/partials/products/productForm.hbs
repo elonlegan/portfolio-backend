@@ -1,0 +1,56 @@
+<div
+	class='card card-body p-4 rounded-0 bg-dark text-white'
+>
+	<h3>
+		Add A Product
+	</h3>
+	<form action='/product/add' method='post' class='m-0'>
+		<div class='mb-2'>
+			<label for='title'>Write a title:</label>
+			<input
+				type='text'
+				name='title'
+				id='title'
+				placeholder='title'
+				class='form-control rounded-0 bg-dark text-white'
+				required
+			/>
+		</div>
+		<div class='mb-2'>
+			<label for='title'>Price:</label>
+			<input
+				type='number'
+				name='price'
+				id='price'
+				placeholder='price'
+				class='form-control rounded-0 bg-dark text-white'
+			/>
+		</div>
+		<div class='mb-2'>
+			<label for='title'>Image url:</label>
+			<input
+				type='url'
+				name='image'
+				id='imageUrl'
+				placeholder='image url'
+				class='form-control rounded-0 bg-dark text-white'
+			/>
+		</div>
+		<div class='mb-2'>
+			<label for='description'>Description:</label>
+
+			<textarea
+				required
+				name='description'
+				placeholder='description'
+				id='description'
+				cols='30'
+				rows='6'
+				class='form-control rounded-0 bg-dark text-white'
+			></textarea>
+		</div>
+		<div class='d-grid'>
+			<button class='btn btn-primary mt-3'>Add</button>
+		</div>
+	</form>
+</div>

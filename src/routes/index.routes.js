@@ -1,26 +1,38 @@
 import { Router } from 'express';
 
 import {
-	renderTasks,
-	createTasks,
-	renderTasksEdit,
-	tasksEdit,
-	deleteTask,
-	taskToggleDone,
-} from '../controllers/task.controller';
+	renderProducts,
+	createProducts,
+	renderProductsEdit,
+	productsEdit,
+	deleteProduct,
+	productToggleDone,
+} from '../controllers/product.controller';
+import {
+	getAllProducts,
+	getProduct,
+	createProduct,
+	EditProduct,
+	deleteProductApi,
+} from '../controllers/apiProduct.controller';
 
 const router = Router();
 
-router.get('/', renderTasks);
+// Visual App ------------------------------------
+router.get('/', renderProducts);
+router.post('/product/add', createProducts);
+router.get('/product/:id/toggleDone', productToggleDone);
+router.get('/product/:id/edit', renderProductsEdit);
+router.post('/product/:id/edit', productsEdit);
+router.get('/product/:id/delete', deleteProduct);
+// Visual App ------------------------------------
 
-router.post('/task/add', createTasks);
-
-router.get('/task/:id/toggleDone', taskToggleDone);
-
-router.get('/task/:id/edit', renderTasksEdit);
-
-router.post('/task/:id/edit', tasksEdit);
-
-router.get('/task/:id/delete', deleteTask);
+// Api App ------------------------------------
+router.get('/api/products', getAllProducts);
+router.get('/api/products/:id', getProduct);
+router.post('/api/products', createProduct);
+router.put('/api/products/:id', EditProduct);
+router.delete('/api/products/:id', deleteProductApi);
+// Api App ------------------------------------
 
 export default router;

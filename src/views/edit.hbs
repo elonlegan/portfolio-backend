@@ -6,11 +6,12 @@
 				class='card card-body bg-dark p-4 text-white rounded-0'
 			>
 				<h1>
-					Update A Task
+					Update A Product
 				</h1>
 				<form
-					action='/task/{{task._id}}/edit'
+					action='/product/{{product._id}}/edit'
 					method='post'
+					class='m-0'
 				>
 					<div class='mb-3'>
 
@@ -19,7 +20,29 @@
 							name='title'
 							placeholder='Title'
 							id='title'
-							value='{{task.title}}'
+							value='{{product.title}}'
+							class='form-control rounded-0 bg-dark text-white'
+						/>
+					</div>
+					<div class='mb-3'>
+
+						<input
+							type='number'
+							name='price'
+							placeholder='Price'
+							id='price'
+							value='{{product.price}}'
+							class='form-control rounded-0 bg-dark text-white'
+						/>
+					</div>
+					<div class='mb-3'>
+
+						<input
+							type='url'
+							name='image'
+							id='imageUrl'
+							placeholder='image url'
+							value='{{product.image}}'
 							class='form-control rounded-0 bg-dark text-white'
 						/>
 					</div>
@@ -31,10 +54,12 @@
 							cols='30'
 							rows='6'
 							class='form-control rounded-0 bg-dark text-white'
-						>{{task.description}}</textarea>
+						>{{product.description}}</textarea>
 					</div>
+					<div class='d-grid'>
 
-					<button class='btn btn-primary'>Update</button>
+						<button class='btn btn-primary'>Update</button>
+					</div>
 				</form>
 
 			</div>

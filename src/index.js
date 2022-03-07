@@ -1,5 +1,5 @@
 import app from './app';
-import './db/database';
+import './db/connection';
 import { PORT } from './config';
 
 app.listen(PORT);
