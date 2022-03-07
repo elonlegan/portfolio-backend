@@ -1,4 +1,5 @@
 import express from 'express';
+const cors = require('cors');
 import { create } from 'express-handlebars';
 import indexRoutes from './routes/index.routes';
 import path from 'path';
@@ -20,6 +21,7 @@ app.engine('.hbs', exphbs.engine);
 app.set('view engine', '.hbs');
 
 // middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 
