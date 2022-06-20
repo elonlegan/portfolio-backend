@@ -1,0 +1,94 @@
+{{#if projects}}
+	<table
+		class='table table-bordered table-hover table-dark'
+	>
+		<thead>
+			<tr>
+				<th>
+					N.
+				</th>
+				<th>
+					Image
+				</th>
+				<th>
+					Title
+				</th>
+				<th>
+					Description
+				</th>
+				<th>
+					URL
+				</th>
+				<th>
+					Repository URL
+				</th>
+				<th>
+					Operations
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{{#each projects}}
+				<tr>
+					<td>
+
+						{{@index}}
+					</td>
+					<td>
+						<img src='{{image}}' height='150px' alt='' />
+					</td>
+					<td>
+						{{title}}
+					</td>
+					<td>
+						{{description}}
+					</td>
+					<td>
+						<a
+							href='{{url}}'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							{{url}}
+						</a>
+					</td>
+					<td>
+						<a
+							href='{{url_repository}}'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							{{url_repository}}
+						</a>
+					</td>
+					<td>
+
+						<a
+							class='btn btn-danger'
+							href='/project/{{_id}}/delete'
+						> delete </a>
+						<a
+							class='btn btn-info'
+							href='/project/{{_id}}/edit'
+						> update </a>
+					</td>
+				</tr>
+
+			{{/each}}
+		</tbody>
+	</table>
+{{else}}
+	<div
+		class='h-100 d-flex align-items-center justify-content-center'
+	>
+		<div class='text-center text-white'>
+			<h1>No projects</h1>
+			<img
+				src='https://img.icons8.com/color/96/000000/project--v1.png'
+				class='w-75'
+			/>
+		</div>
+	</div>
+
+{{/if}}

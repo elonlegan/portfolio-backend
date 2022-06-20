@@ -2,9 +2,9 @@
 	class='card card-body p-4 rounded-0 bg-dark text-white'
 >
 	<h3>
-		Add A Product
+		Add A Project
 	</h3>
-	<form action='/product/add' method='post' class='m-0'>
+	<form action='/project/add' method='post' class='m-0'>
 		<div class='mb-2'>
 			<label for='title'>Write a title:</label>
 			<input
@@ -17,17 +17,28 @@
 			/>
 		</div>
 		<div class='mb-2'>
-			<label for='title'>Price:</label>
+			<label for='url'>URL:</label>
 			<input
-				type='number'
-				name='price'
-				id='price'
-				placeholder='price'
+				type='url'
+				name='url'
+				id='url'
+				placeholder='URL'
+				class='form-control rounded-0 bg-dark text-white'
+				required
+			/>
+		</div>
+		<div class='mb-2'>
+			<label for='url_repository'>Repository URL:</label>
+			<input
+				type='url'
+				name='url_repository'
+				id='url_repository'
+				placeholder='repository URL'
 				class='form-control rounded-0 bg-dark text-white'
 			/>
 		</div>
 		<div class='mb-2'>
-			<label for='title'>Image url:</label>
+			<label for='imageUrl'>Image URL:</label>
 			<input
 				type='url'
 				name='image'
