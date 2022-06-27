@@ -5,6 +5,11 @@ const Schema = mongoose.Schema;
 const schema = new Schema(
 	{
 		title: { type: String, required: true, unique: true },
+		description: {
+			type: String,
+			required: true,
+			unique: true,
+		},
 		date: { type: Date, required: true, unique: true },
 		url: {
 			type: String,
