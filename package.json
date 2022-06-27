@@ -1,32 +1,38 @@
 {
-	"name": "store-crud-node-mongo",
+	"name": "projectify",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"dev": "nodemon src/index.js --exec babel-node",
-		"build": "babel src -d dist && ncp src/views  dist/views && ncp src/public  dist/public",
-		"start": "node dist/index.js"
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/elonlegan/projectify-backend"
 	},
-	"keywords": [],
-	"author": "elonlegan",
-	"license": "ISC",
-	"devDependencies": {
-		"@babel/cli": "^7.17.6",
-		"@babel/core": "^7.17.5",
-		"@babel/node": "^7.16.8",
-		"@babel/plugin-transform-runtime": "^7.17.0",
-		"@babel/preset-env": "^7.16.11",
-		"ncp": "^2.0.0",
-		"nodemon": "^2.0.15"
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js",
+		"test": "NODE_ENV=test jest --runInBand"
 	},
 	"dependencies": {
-		"@babel/runtime": "^7.17.2",
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
 		"dotenv": "^16.0.0",
-		"express": "^4.17.3",
-		"express-handlebars": "^6.0.3",
-		"mongoose": "^6.2.4",
-		"morgan": "^1.10.0"
+		"express": "^4.17.1",
+		"express-jwt": "^6.0.0",
+		"joi": "^17.1.1",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.1",
+		"mongodb": "^3.5.7",
+		"mongoose": "^5.9.25",
+		"morgan": "^1.10.0",
+		"nodemailer": "^6.4.6",
+		"rootpath": "^0.1.2",
+		"yamljs": "^0.3.0"
+	},
+	"devDependencies": {
+		"jest": "^27.5.1",
+		"nodemon": "^2.0.3",
+		"supertest": "^6.2.2"
 	}
 }

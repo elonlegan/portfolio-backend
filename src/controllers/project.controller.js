@@ -1,58 +1,74 @@
-import Project from '../models/Project';
+﻿const projectService = require('../services/project.service');
+const Joi = require('joi');
+const validateRequest = require('../middleware/validate-request');
 
-export const renderProjects = async (req, res) => {
-	const projects = await Project.find().lean();
-
-	console.log(projects);
-
-	res.render('index', { projects: projects });
-};
-export const createProjects = async (req, res) => {
-	try {
-		if (!req.body.image) {
-			req.body.image = undefined;
-		}
-
-		const project = Project(req.body);
-
-		const projectSaved = await project.save();
-
-		console.log(projectSaved);
-
-		res.redirect('/');
-	} catch (error) {
-		console.log(error);
-	}
+module.exports = {
+	getAll,
+	getById,
+	createSchema,
+	create,
+	updateSchema,
+	update,
+	delete: _delete,
 };
 
-export const renderProjectsEdit = async (req, res) => {
-	try {
-		const project = await Project.findById(
-			req.params.id
-		).lean();
-		res.render('edit', { project });
-	} catch (error) {
-		console.error(error);
-	}
-};
+function getAll(req, res, next) {
+	projectService
+		.getAll()
+		.then((projects) => res.json(projects))
+		.catch(next);
+}
 
-export const projectsEdit = async (req, res) => {
-	const { id } = req.params;
-	await Project.findByIdAndUpdate(id, req.body);
-	res.redirect('/');
-};
+function getById(req, res, next) {
+	projectService
+		.getById(req.params.id)
+		.then((project) =>
+			project ? res.json(project) : res.sendStatus(404)
+		)
+		.catch(next);
+}
 
-export const deleteProject = async (req, res) => {
-	const { id } = req.params;
-	await Project.findByIdAndDelete(id);
-	res.redirect('/');
-};
+function createSchema(req, res, next) {
+	const schema = Joi.object({
+		title: Joi.string().required(),
+		date: Joi.string().required(),
+		url: Joi.string().required(),
+		repositoryUrl: Joi.string().required(),
+		imageUrl: Joi.string().required(),
+	});
+	validateRequest(req, next, schema);
+}
 
-export const projectToggleDone = async (req, res) => {
-	const { id } = req.params;
-	const project = await Project.findById(id);
-	project.done = !project.done;
-	await project.save();
-	console.log(project);
-	res.redirect('/');
-};
+function create(req, res, next) {
+	projectService
+		.create(req.body)
+		.then((project) => res.json(project))
+		.catch(next);
+}
+
+function updateSchema(req, res, next) {
+	const schema = Joi.object({
+		title: Joi.string().empty(''),
+		date: Joi.string().empty(''),
+		url: Joi.string().empty(''),
+		repositoryUrl: Joi.string().empty(''),
+		imageUrl: Joi.string().empty(''),
+	});
+	validateRequest(req, next, schema);
+}
+
+function update(req, res, next) {
+	projectService
+		.update(req.params.id, req.body)
+		.then((project) => res.json(project))
+		.catch(next);
+}
+
+function _delete(req, res, next) {
+	projectService
+		.delete(req.params.id)
+		.then(() =>
+			res.json({ message: 'Project deleted successfully' })
+		)
+		.catch(next);
+}
