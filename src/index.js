@@ -38,6 +38,7 @@ app.use(
 // api routes
 app.use('/accounts', require('./routes/account.routes'));
 app.use('/projects', require('./routes/project.routes'));
+app.use('/skills', require('./routes/skill.routes'));
 
 // global error handler
 app.use(errorHandler);
