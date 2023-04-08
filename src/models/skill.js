@@ -5,9 +5,14 @@ const Schema = mongoose.Schema;
 const schema = new Schema(
 	{
 		title: { type: String, required: true, unique: true },
-		certificationUrl: {
+		url: {
 			type: String,
 			required: false,
+		},
+		imageUrl: {
+			type: String,
+			default:
+				'https://latarta.com.co/wp-content/uploads/2018/06/default-placeholder.png',
 		},
 		customStyles: {
 			type: String,

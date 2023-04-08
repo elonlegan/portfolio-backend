@@ -31,8 +31,9 @@ function getById(req, res, next) {
 function createSchema(req, res, next) {
 	const schema = Joi.object({
 		title: Joi.string().required(),
-		certificationUrl: Joi.string(),
-		customStyles: Joi.string(),
+		url: Joi.string().empty('').optional(),
+		imageUrl: Joi.string().empty('').optional(),
+		customStyles: Joi.string().empty('').optional(),
 	});
 	validateRequest(req, next, schema);
 }
@@ -47,7 +48,8 @@ function create(req, res, next) {
 function updateSchema(req, res, next) {
 	const schema = Joi.object({
 		title: Joi.string().empty(''),
-		certificationUrl: Joi.string().empty(''),
+		url: Joi.string().empty(''),
+		imageUrl: Joi.string().empty(''),
 		customStyles: Joi.string().empty(''),
 	});
 	validateRequest(req, next, schema);
