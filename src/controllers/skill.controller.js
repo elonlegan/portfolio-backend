@@ -31,6 +31,7 @@ function getById(req, res, next) {
 function createSchema(req, res, next) {
 	const schema = Joi.object({
 		title: Joi.string().required(),
+		color: Joi.string().empty('').optional(),
 		url: Joi.string().empty('').optional(),
 		imageUrl: Joi.string().empty('').optional(),
 		customStyles: Joi.string().empty('').optional(),
@@ -48,6 +49,7 @@ function create(req, res, next) {
 function updateSchema(req, res, next) {
 	const schema = Joi.object({
 		title: Joi.string().empty(''),
+		color: Joi.string().empty(''),
 		url: Joi.string().empty(''),
 		imageUrl: Joi.string().empty(''),
 		customStyles: Joi.string().empty(''),

@@ -5,6 +5,11 @@ const Schema = mongoose.Schema;
 const schema = new Schema(
 	{
 		title: { type: String, required: true, unique: true },
+		color: {
+			type: String,
+			required: false,
+			default: '#026fff',
+		},
 		url: {
 			type: String,
 			required: false,
