@@ -36,6 +36,7 @@ function createSchema(req, res, next) {
 		url: Joi.string().required(),
 		repositoryUrl: Joi.string().required(),
 		imageUrl: Joi.string().required(),
+		skills: Joi.array().empty(''),
 	});
 	validateRequest(req, next, schema);
 }
@@ -55,6 +56,7 @@ function updateSchema(req, res, next) {
 		url: Joi.string().empty(''),
 		repositoryUrl: Joi.string().empty(''),
 		imageUrl: Joi.string().empty(''),
+		skills: Joi.array().empty(''),
 	});
 	validateRequest(req, next, schema);
 }

@@ -8,9 +8,8 @@ const schema = new Schema(
 		description: {
 			type: String,
 			required: true,
-			unique: true,
 		},
-		date: { type: Date, required: true, unique: true },
+		date: { type: Date, required: true },
 		url: {
 			type: String,
 			required: true,
@@ -24,6 +23,7 @@ const schema = new Schema(
 			default:
 				'https://latarta.com.co/wp-content/uploads/2018/06/default-placeholder.png',
 		},
+		skills: [{ type: Schema.Types.ObjectId, ref: 'Skill' }],
 	},
 	{ timestamps: true, versionKey: false }
 );
