@@ -315,7 +315,7 @@ function setTokenCookie(res, token) {
 		httpOnly: true,
 		secure: true,
 		expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-		sameSite: 'lax',
+		sameSite: 'none',
 	};
 	res.cookie('refreshToken', token, cookieOptions);
 }
